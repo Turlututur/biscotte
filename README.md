@@ -1,13 +1,13 @@
 # Biscotte
 
-Un petit projet personnel visant à créer un bot discord de lecture de musique (suite à la fermeture du bot Rythm).
-Il faut noter qu'il manque le fichier 'config.json' necessaire au bon fonctionnement du bot car il contient la clé du bot ainsi que le préfix utilisé.
+A small personal project to create a discord bot for playing music (following the closure of the Rythm bot).
+It should be noted that the 'config.json' file necessary for the proper functioning of the bot is missing because it contains the key of the bot as well as the prefix used.
 
-## Ajoutez le sur votre serveur
+## Add the bot to your server 
 
 https://discord.com/api/oauth2/authorize?client_id=887667419408109619&permissions=274881251328&scope=bot
 
-## Manipulez ce code !
+## Use this code !
 
 ```bash
  $ npm install
@@ -16,7 +16,7 @@ https://discord.com/api/oauth2/authorize?client_id=887667419408109619&permission
  $ npm install yt-search
 ```
 
-## Mise en service
+## Commissioning
 
 ```bash
 $ node index.js
@@ -31,16 +31,16 @@ $ node index.js
 }
 ```
 
-Vous pouvez évidemment adapter le préfix à votre convenance !
+Of course, you can adapt the prefix to your liking !
 
 ## Usage
 
-Sur le serveur sur lequel votre bot sera invité, tapez :
+On the server where your bot will be invited, type:
 
 ```
 b!help
 ```
 
-Le bot devrait alors vous répondre.
+The bot should then respond to you (in French).
 
-Vous n'avez plus qu'à lui faire jouer de la musique sur votre serveur !
+All you have to do is make it play music on your server !
