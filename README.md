@@ -7,7 +7,7 @@ Il faut noter qu'il manque le fichier 'config.json' necessaire au bon fonctionne
 
 https://discord.com/api/oauth2/authorize?client_id=887667419408109619&permissions=274881251328&scope=bot
 
-## Installation
+## Manipulez ce code !
 
 ```bash
  $ npm install
@@ -26,7 +26,7 @@ $ node index.js
 
 ```json
 {
-  "prefix": "c!",
+  "prefix": "b!",
   "token": "clé-de-votre-bot-discord"
 }
 ```
