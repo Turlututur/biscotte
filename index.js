@@ -95,7 +95,10 @@ client.on("message", async (message) => {
   } else if (message.content.startsWith(`${prefix}stop`)) {
     stop(message, serverQueue);
     return;
+  } else {
+    message.channel.send("Je n'ai pas compris votre demande... (⌣̩̩́_⌣̩̩̀)");
   }
+});
 
 /**on regarde si l'utilisateur est dans un channel
  * et si le bot a le droit d'y aller.
