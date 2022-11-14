@@ -3,6 +3,10 @@
 Un petit projet personnel visant à créer un bot discord de lecture de musique (suite à la fermeture du bot Rythm).
 Il faut noter qu'il manque le fichier 'config.json' necessaire au bon fonctionnement du bot car il contient la clé du bot ainsi que le préfix utilisé.
 
+## Ajoutez le sur votre serveur
+
+https://discord.com/api/oauth2/authorize?client_id=887667419408109619&permissions=274881251328&scope=bot
+
 ## Installation
 
 ```bash
