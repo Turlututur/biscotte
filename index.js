@@ -9,19 +9,19 @@ const queue = new Map();
 const client = new Discord.Client();
 
 const status = [
-  ["LISTENING", "to some Lo-fi 😌"],
-  ["LISTENING", "to synthwave 😎"],
+  ["LISTENING", "some Lo-fi 😌"],
+  ["LISTENING", "synthwave 😎"],
   ["LISTENING", "to some rap 👌"],
-  ["LISTENING", "du metal ! 🤘"],
-  ["LISTENING", "to some l'asmr 😴"],
-  ["LISTENING", "to some l'électro 😋"],
+  ["LISTENING", "some metal ! 🤘"],
+  ["LISTENING", "some l'asmr 😴"],
+  ["LISTENING", "some l'électro 😋"],
   ["LISTENING", "some k-pop 😍"],
   ["LISTENING", "some drill 💀🔪"],
 ];
 
 /**Uniquement pour la console du serveur, permet de connaître le status du bot */
 client.once("ready", () => {
-  client.user.setActivity("to the alarm clock ring 😴", { type: "LISTENING" });
+  client.user.setActivity("the alarm clock ring 😴", { type: "LISTENING" });
 
   setInterval(() => {
     let id = Math.floor(Math.random() * (status.length - 1) + 1);
