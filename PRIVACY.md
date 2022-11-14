@@ -4,7 +4,7 @@ The use of this application ("Bot") in a server doesn't requires the collection 
 
 ## User Rights
 
-At any time, you have the right to request to view the source code of this bot pertaining to your Discord account. You may submit a request through the [Discord Privates Messages] to `@Turlututur`.
+At any time, you have the right to request to view the source code of this bot pertaining to your Discord account. You may submit a request through the [Discord Privates Messages] to `@Turlututur#8694`.
 
 ## Underage Users
 
@@ -12,4 +12,4 @@ The use of the Bot is not permitted for minors under the age of 13, or under the
 
 ## Questions
 
-If you have any questions or are concerned about if data might be being stored from your account contact `@Turlututur`. For more information check the [Discord Terms Of Service](https://discord.com/terms).
+If you have any questions or are concerned about if data might be being stored from your account contact `@Turlututur#8694`. For more information check the [Discord Terms Of Service](https://discord.com/terms).
