@@ -1,7 +1,7 @@
 //version 1.4.0
 
 const Discord = require("discord.js");
-const { prefix, token, ahegao } = require("./config.json");
+const { prefix, token } = require("./config.json");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
 
@@ -9,21 +9,19 @@ const queue = new Map();
 const client = new Discord.Client();
 
 const status = [
-  ["LISTENING", "de la Lo-fi 😌"],
-  ["LISTENING", "de la synthwave 😎"],
-  ["LISTENING", "du rap 👌"],
+  ["LISTENING", "to some Lo-fi 😌"],
+  ["LISTENING", "to synthwave 😎"],
+  ["LISTENING", "to some rap 👌"],
   ["LISTENING", "du metal ! 🤘"],
-  ["LISTENING", "de l'asmr 😴"],
-  ["LISTENING", "de l'électro 😋"],
-  ["WATCHING", "ton historique 🤨"],
-  ["LISTENING", "de la k-pop 😍"],
-  ["STREAMING", "un film louche 🤨"],
-  ["LISTENING", "de la drill 💀🔪"],
+  ["LISTENING", "to some l'asmr 😴"],
+  ["LISTENING", "to some l'électro 😋"],
+  ["LISTENING", "some k-pop 😍"],
+  ["LISTENING", "some drill 💀🔪"],
 ];
 
 /**Uniquement pour la console du serveur, permet de connaître le status du bot */
 client.once("ready", () => {
-  client.user.setActivity("le réveil sonner 😴", { type: "LISTENING" });
+  client.user.setActivity("to the alarm clock ring 😴", { type: "LISTENING" });
 
   setInterval(() => {
     let id = Math.floor(Math.random() * (status.length - 1) + 1);
@@ -34,21 +32,21 @@ client.once("ready", () => {
 
   console.log("Ready!");
   client.users.fetch("314817432911085569", false).then((user) => {
-    user.send("Bonjour, j'ai démarré sans problème.");
+    user.send("Hello, lauched successfully");
   });
 });
 
 client.once("reconnecting", () => {
   console.log("Reconnecting!");
   client.users.fetch("314817432911085569", false).then((user) => {
-    user.send("Je me reconnecte !");
+    user.send("Reconnecting !");
   });
 });
 
 client.once("disconnect", () => {
   console.log("Disconnect!");
   client.users.fetch("314817432911085569", false).then((user) => {
-    user.send("Déconnectée !");
+    user.send("Disconnected !");
   });
 });
 
@@ -66,7 +64,7 @@ client.on("message", async (message) => {
       execute(message, serverQueue);
     } catch (err) {
       client.users.fetch("314817432911085569", false).then((user) => {
-        user.send("J'ai rencontré une erreur : ``` \n " + err + "```");
+        user.send("Error : ``` \n " + err + "```");
       });
     }
 
@@ -77,7 +75,7 @@ client.on("message", async (message) => {
   } else if (message.content.startsWith(`${prefix}help`)) {
     //console.log(message);
     message.channel.send(
-      "Bonjour à vous UwU ! Je suis Biscotte, un bot musical, je peux vous jouer de la musique via YouTube ! Voici les commandes que vous pouvez utiliser avec moi :  ``` - b!play [url/phrase] \n - b!skip \n - b!stop \n \n - b!remove - b!pause et b!resume```"
+      "Hi ! I'm Biscotte, your personnal music bot, i can play some music through YouTube ! Here are the commands you can use with me :  ``` - b!play [url/words] \n - b!skip \n - b!stop \n \n - b!remove - b!pause and b!resume```"
     );
     return;
   } else if (message.content.startsWith(`${prefix}skip`)) {
@@ -96,7 +94,9 @@ client.on("message", async (message) => {
     stop(message, serverQueue);
     return;
   } else {
-    message.channel.send("Je n'ai pas compris votre demande... (⌣̩̩́_⌣̩̩̀)");
+    message.channel.send(
+      "I get what you are saying *doesn't get what you are saying* (⌣̩̩́_⌣̩̩̀)"
+    );
   }
 });
 
@@ -110,12 +110,12 @@ async function execute(message, serverQueue) {
   const voiceChannel = message.member.voice.channel;
   if (!voiceChannel)
     return message.channel.send(
-      "Vous devez être dans un salon vocal pour jouer de la musique... (~_~;)"
+      "You should be in a voice channel to play music... (~_~;)"
     );
   const permissions = voiceChannel.permissionsFor(message.client.user);
   if (!permissions.has("CONNECT") || !permissions.has("SPEAK")) {
     return message.channel.send(
-      "Je n'ai pas la permission de rejoindre ce salon vocal... (~_~;)"
+      "I don't have the permission to join this voice channel... (~_~;)"
     );
   }
 
@@ -135,7 +135,7 @@ async function execute(message, serverQueue) {
   } else {
     const { videos } = await yts(args.slice(1).join(" ")); //les videos peuvent avoir des espaces
     if (!videos.length) {
-      return message.channel.send("Je n'ai pas trouvé de chanson...");
+      return message.channel.send("I didn't find any song...");
     } else {
       song = {
         title: videos[0].title,
@@ -166,7 +166,7 @@ async function execute(message, serverQueue) {
     } catch (err) {
       console.log(err);
       client.users.fetch("314817432911085569", false).then((user) => {
-        user.send("J'ai rencontré une erreur : ```" + err + "```");
+        user.send("Error : ```" + err + "```");
       });
       queue.delete(message.guild.id);
       return message.channel.send(err);
@@ -174,7 +174,7 @@ async function execute(message, serverQueue) {
   } else {
     serverQueue.songs.push(song);
     return message.channel.send(
-      `**${song.title}** à été ajouté à la liste d'attente ! UwU`
+      `**${song.title}** has been added to your queue ! UwU`
     );
   }
 }
@@ -182,10 +182,10 @@ async function execute(message, serverQueue) {
 function skip(message, serverQueue) {
   if (!message.member.voice.channel)
     return message.channel.send(
-      "Vous devez être dans un salon vocal pour changer la musique. (҂⌣̀_⌣́)"
+      "You should be in a voice channel to change the current music. (҂⌣̀_⌣́)"
     );
   if (!serverQueue)
-    return message.channel.send("Je n'ai pas de chanson à passer (・_・;)");
+    return message.channel.send("I don't have any song to skip.. (・_・;)");
   serverQueue.connection.dispatcher.end();
 }
 
@@ -196,14 +196,14 @@ function skip(message, serverQueue) {
 function stop(message, serverQueue) {
   if (!message.member.voice.channel)
     return message.channel.send(
-      "Vous devez être dans un salon vocal pour arrêter la musique (҂⌣̀_⌣́)"
+      "You should be in a voice channel to stop the music ! (҂⌣̀_⌣́)"
     );
 
   if (!serverQueue)
-    return message.channel.send("Je n'ai pas de chanson à arrêter (・_・;)");
+    return message.channel.send("I don't have any song to stop... (・_・;)");
   serverQueue.songs = [];
   serverQueue.connection.dispatcher.end();
-  message.channel.send("Oki ! J'arrête la musique !  (｡◕‿◕｡)");
+  message.channel.send("Oki ! Music stopped !  (｡◕‿◕｡)");
 }
 
 /** Fonction permettant
@@ -228,23 +228,23 @@ function play(guild, song) {
     .on("error", (error) => {
       console.error(error);
       client.users.fetch("314817432911085569", false).then((user) => {
-        user.send("J'ai rencontré une erreur : ``` \n " + error + "```");
+        user.send("Error : ``` \n " + error + "```");
       });
     });
   dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
   serverQueue.textChannel.send(
-    `Je commence à jouer: **${song.title}** ヽ(•‿•)ノ . \n **${song.url}**`
+    `I'm starting to play : **${song.title}** ヽ(•‿•)ノ . \n **${song.url}**`
   );
 }
 
 function pause(message, serverQueue) {
   if (!message.member.voice.channel) {
     return message.channel.send(
-      "Vous devez être dans un salon vocal pour mettre la musique en pause. (҂⌣̀_⌣́)"
+      "You should be in a voice channel to pause the music. (҂⌣̀_⌣́)"
     );
   } else {
     serverQueue.connection.dispatcher.pause();
-    message.channel.send("On fait une petite pause ! (づ￣ ³￣)づ");
+    message.channel.send("Let's make a break ! (づ￣ ³￣)づ");
     return;
   }
 }
@@ -255,11 +255,11 @@ function pause(message, serverQueue) {
 function resume(message, serverQueue) {
   if (!message.member.voice.channel) {
     return message.channel.send(
-      "Vous devez être dans un salon vocal pour remettre la musique. (҂⌣̀_⌣́)"
+      "You should be in a voice channel to bring back the music. (҂⌣̀_⌣́)"
     );
   } else {
     serverQueue.connection.dispatcher.resume();
-    message.channel.send("On reprend la musique ! (づ｡◕‿‿◕)づ");
+    message.channel.send("Let's resume the music ! (づ｡◕‿‿◕)づ");
     return;
   }
 }
@@ -271,11 +271,11 @@ function resume(message, serverQueue) {
 function remove(message, serverQueue) {
   if (!message.member.voice.channel) {
     return message.channel.send(
-      "Vous devez être dans un salon vocal pour retirer une musique !"
+      "You should be in a voice channel to remove a song !"
     );
   } else {
     message.channel.send(
-      `J'ai retiré **${serverQueue.songs.pop().title}** de la liste d'attente`
+      `**${serverQueue.songs.pop().title}** has been removed from queue.`
     );
     return;
   }
@@ -289,11 +289,11 @@ function remove(message, serverQueue) {
  */
 function purge(message, serverQueue) {
   if (!message.author.id == "314817432911085569") {
-    message.channel.send("Vous n'avez pas le droit.");
+    message.channel.send("Forbidden command.");
     return;
   } else {
     serverQueue.voiceChannel.leave();
-    message.channel.send("J'arrête toute activité.");
+    message.channel.send("Sir, everything is stopped, sir !");
     return;
   }
 }
