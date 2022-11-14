@@ -34,7 +34,7 @@ Vous pouvez évidemment adapter le préfix à votre convenance !
 Sur le serveur sur lequel votre bot sera invité, tapez :
 
 ```
-c!help
+b!help
 ```
 
 Le bot devrait alors vous répondre.
