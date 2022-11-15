@@ -11,7 +11,7 @@ const client = new Discord.Client();
 const status = [
   ["LISTENING", "some Lo-fi 😌"],
   ["LISTENING", "synthwave 😎"],
-  ["LISTENING", "to some rap 👌"],
+  ["LISTENING", "some rap 👌"],
   ["LISTENING", "some metal ! 🤘"],
   ["LISTENING", "some l'asmr 😴"],
   ["LISTENING", "some l'électro 😋"],
